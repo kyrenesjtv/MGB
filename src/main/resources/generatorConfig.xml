@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+		"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--<classPathEntry location="D:\mysql-connector-java-5.1.37.jar"/>-->
+  <context id="context1">
+  		
+		<property name="renamePlugin.prefix" value="MBG"/>
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+		<plugin type="com.gjp.mbg.utils.RenamePlugin"/>
+		<plugin type="com.gjp.mbg.utils.MySQLRowBoundsPlugin"/>
+
+      <jdbcConnection
+              driverClass="com.mysql.jdbc.Driver"
+              connectionURL="jdbc:mysql://localhost:3306/test"
+              userId="root"
+              password="123456">
+      </jdbcConnection>
+		<javaTypeResolver type="com.gjp.mbg.utils.CustomJavaTypeResolver">
+			<property name="customTypeMap" value="TINYINT:java.lang.Integer"/>
+		</javaTypeResolver>
+		
+		<javaModelGenerator targetPackage="com.gjp.example.mbg.model"
+			targetProject="src/main/java">			
+			<property name="trimStrings" value="" />
+			<property name="renamePlugin.prefix" value="" />
+		</javaModelGenerator>
+		
+		<sqlMapGenerator targetPackage="com.gjp.example.mbg.mapper"
+			targetProject="src/main/java">							
+			<property name="renamePlugin.prefix" value="MBG"/>
+		</sqlMapGenerator>
+		
+		
+		<javaClientGenerator targetPackage="com.gjp.example.mbg.dao"
+			targetProject="src/main/java" type="XMLMAPPER">
+			<property name="renamePlugin.search" value="Mapper"/>
+			<property name="renamePlugin.replace" value="Dao"/>											
+			<property name="renamePlugin.prefix" value="MBG" />		
+		</javaClientGenerator>
+
+		<table tableName="tb_user">
+			<property name="useActualColumnNames" value="true" />			
+		</table>
+
+
+
+
+  </context> 
+	 <!-- <context id="context2">
+ 
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>		
+		<plugin type="com.gjp.mbg.utils.RenamePlugin"/>
+
+          <jdbcConnection
+                  driverClass="com.mysql.jdbc.Driver"
+                  connectionURL="jdbc:mysql://localhost:3306/centerdata"
+                  userId="root"
+                  password="123456">
+          </jdbcConnection>
+		<javaTypeResolver type="com.gjp.mbg.utils.CustomJavaTypeResolver">
+			<property name="customTypeMap" value="TINYINT:java.lang.Integer"/>
+		</javaTypeResolver>
+		
+	 	<javaModelGenerator targetPackage="com.runbros.betterlive.service.custom.model"
+			targetProject="src/main/java">
+			
+			<property name="trimStrings" value="true" />
+			<property name="renamePlugin.prefix" value="" />
+		</javaModelGenerator>
+		
+		<sqlMapGenerator targetPackage="com.runbros.betterlive.service.custom.mapper"
+			targetProject="src/main/java">
+			
+		</sqlMapGenerator>
+		
+		
+		<javaClientGenerator targetPackage="com.runbros.betterlive.service.custom.dao"
+			targetProject="src/main/java" type="MAPPER">
+			<property name="renamePlugin.search" value="Mapper"/>
+			<property name="renamePlugin.replace" value="Dao"/>			
+		</javaClientGenerator>
+
+		<table tableName="admin"
+			   enableDeleteByPrimaryKey="false"			  
+			   enableInsert="false"
+			   enableUpdateByExample="false"
+			   enableUpdateByPrimaryKey="false"
+			   enableCountByExample="false"
+			   enableSelectByExample="false"			  
+			   enableSelectByPrimaryKey="false">			 	
+		</table>
+  </context>-->
+</generatorConfiguration>
